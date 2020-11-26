@@ -1,5 +1,5 @@
 .maindisplay {
-  background: lightgrey;
+  background: rgb(134, 216, 243);
   height: calc(100% / 3);
   padding: 5% !important;
   font-size: 4rem;
@@ -17,12 +17,16 @@
   height: calc(200% / 4);
 }
 .keys {
-  margin: 1;
+  font-family: Roboto;
+  margin: 5px 1px 5px 1px;
+  border-color:cornflowerblue;
+  border-radius: 25px;
+  border-style: solid;
   width: 20%;
   height: 20%;
   background: whitesmoke;
   color: black;
-  padding: 2.5%;
+  padding: 1.2%;
   font-size: 2rem;
   text-align: center;
   cursor: pointer;
