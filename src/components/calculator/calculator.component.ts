@@ -1,12 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Store } from "@ngxs/store";
-import {
-  AdditionOperatorAction,
-  DivisionOperatorAction,
-  MultiplicationOperatorAction,
-  ResponseState,
-  SubstractOperatorAction
-} from "../../models/operator/operator.redux";
+import { OperatorsvcService } from "../../services/operator/operatorsvc.service";
 
 @Component({
   selector: "app-calculator",
@@ -14,7 +7,7 @@ import {
   styleUrls: ["./calculator.component.css"]
 })
 export class CalculatorComponent implements OnInit {
-  constructor(private store: Store) {}
+  constructor(private servicex: OperatorsvcService) {}
   ngOnInit() {}
   //@Select(ResponseState.getResult) results$;
   subText = "";
@@ -54,11 +47,8 @@ export class CalculatorComponent implements OnInit {
     this.operand2 = parseFloat(this.mainText.split(this.operator)[1]);
     if (this.operator === "/") {
       this.subText = this.mainText;
-      this.store.dispatch(
-        new DivisionOperatorAction(this.operand1, this.operand2)
-      );
-      this.mainText = this.store
-        .selectSnapshot(ResponseState.getResult)
+      this.mainText = this.servicex
+        .makeDivision(this.operand1, this.operand2)
         .toString();
       this.subText = this.calculationString;
       if (this.mainText.length > 9) {
@@ -66,11 +56,8 @@ export class CalculatorComponent implements OnInit {
       }
     } else if (this.operator === "x") {
       this.subText = this.mainText;
-      this.store.dispatch(
-        new MultiplicationOperatorAction(this.operand1, this.operand2)
-      );
-      this.mainText = this.store
-        .selectSnapshot(ResponseState.getResult)
+      this.mainText = this.servicex
+        .makeMultiplication(this.operand1, this.operand2)
         .toString();
       this.subText = this.calculationString;
       if (this.mainText.length > 9) {
@@ -79,20 +66,14 @@ export class CalculatorComponent implements OnInit {
       }
     } else if (this.operator === "-") {
       this.subText = this.mainText;
-      this.store.dispatch(
-        new SubstractOperatorAction(this.operand1, this.operand2)
-      );
-      this.mainText = this.store
-        .selectSnapshot(ResponseState.getResult)
+      this.mainText = this.servicex
+        .makeSubstract(this.operand1, this.operand2)
         .toString();
       this.subText = this.calculationString;
     } else if (this.operator === "+") {
       this.subText = this.mainText;
-      this.store.dispatch(
-        new AdditionOperatorAction(this.operand1, this.operand2)
-      );
-      this.mainText = this.store
-        .selectSnapshot(ResponseState.getResult)
+      this.mainText = this.servicex
+        .makeAddition(this.operand1, this.operand2)
         .toString();
       this.subText = this.calculationString;
       if (this.mainText.length > 9) {

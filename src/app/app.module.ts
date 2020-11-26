@@ -8,6 +8,7 @@ import { CalculatorComponent } from "../components/calculator/calculator.compone
 import { NgxsModule } from "@ngxs/store";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { ResponseState } from "../models/operator/operator.redux";
+import { OperatorsvcService } from "../services/operator/operatorsvc.service";
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { ResponseState } from "../models/operator/operator.redux";
     }),
     NgxsReduxDevtoolsPluginModule.forRoot()
   ],
+  providers: [OperatorsvcService],
   declarations: [AppComponent, HelloComponent, CalculatorComponent],
   bootstrap: [AppComponent]
 })
