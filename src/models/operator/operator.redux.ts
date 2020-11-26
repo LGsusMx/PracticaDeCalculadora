@@ -22,8 +22,8 @@ export class MultiplicationOperatorAction {
   constructor(public num1: number, public num2: number) {}
 }
 
-export class DivitionOperatorAction {
-  public static type = "[number] Divition";
+export class DivisionOperatorAction {
+  public static type = "[number] Division";
 
   constructor(public num1: number, public num2: number) {}
 }
@@ -69,8 +69,8 @@ export class ResponseState {
     });
   }
 
-  @Action(DivitionOperatorAction)
-  divition(state: StateContext<IRResponse>, action: DivitionOperatorAction) {
+  @Action(DivisionOperatorAction)
+  division(state: StateContext<IRResponse>, action: DivisionOperatorAction) {
     var res = action.num1 / action.num2;
     state.setState({
       result: res

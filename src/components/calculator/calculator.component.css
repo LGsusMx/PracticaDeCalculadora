@@ -14,15 +14,15 @@
   overflow: auto;
 }
 .keypad {
-  height: calc(200% / 3);
+  height: calc(200% / 4);
 }
 .keys {
-  margin: 0;
-  width: 25%;
+  margin: 1;
+  width: 20%;
   height: 20%;
   background: whitesmoke;
   color: black;
-  padding: 5%;
+  padding: 2.5%;
   font-size: 2rem;
   text-align: center;
   cursor: pointer;

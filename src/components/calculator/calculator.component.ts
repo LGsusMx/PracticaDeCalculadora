@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Store } from "@ngxs/store";
 import {
   AdditionOperatorAction,
-  DivitionOperatorAction,
+  DivisionOperatorAction,
   MultiplicationOperatorAction,
   ResponseState,
   SubstractOperatorAction
@@ -47,6 +47,7 @@ export class CalculatorComponent implements OnInit {
       return;
     }
     this.mainText += key;
+    this.answered = false;
   }
   getAnswer() {
     this.calculationString = this.mainText;
@@ -54,7 +55,7 @@ export class CalculatorComponent implements OnInit {
     if (this.operator === "/") {
       this.subText = this.mainText;
       this.store.dispatch(
-        new DivitionOperatorAction(this.operand1, this.operand2)
+        new DivisionOperatorAction(this.operand1, this.operand2)
       );
       this.mainText = this.store
         .selectSnapshot(ResponseState.getResult)
@@ -108,5 +109,6 @@ export class CalculatorComponent implements OnInit {
     this.mainText = "";
     this.subText = "";
     this.operatorSet = false;
+    this.answered = false;
   }
 }
